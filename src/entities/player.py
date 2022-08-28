@@ -9,7 +9,7 @@ from common.event import EventType, GameEvent
 from common.types import ActionType, EntityType
 from config import GameConfig
 # <-- COT MOC 4 -->
-# from config import PlayerConfig
+from config import PlayerConfig
 from entities.animated_entity import AnimatedEntity
 from entities.friendly_npc import FriendlyNpc
 
@@ -23,7 +23,6 @@ class Player(AnimatedEntity):
     """
     The main character controlled by user, can talk / fight NPCs, can interact with in-game objects.
     """
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.npc_near_by: Optional[FriendlyNpc] = None
@@ -75,7 +74,6 @@ class Player(AnimatedEntity):
         This subject is controllable by user, we ask it to move based on keyboard inputs here.
         """
         for event in self.events:
-
             # Only allow player to move when NOT talking to some NPC.
             if not self.talking:
                 if event.is_key_down(pygame.K_LEFT, pygame.K_a):
@@ -92,8 +90,8 @@ class Player(AnimatedEntity):
             elif event.is_key_up(pygame.K_e):
                 self._handle_activation()
             # <-- COT MOC 4 -->
-            # elif event.is_key_down(pygame.K_f):
-            #     self._handle_throw()
+            elif event.is_key_down(pygame.K_f):
+                self._handle_throw()
             elif event.is_type(EventType.NPC_DIALOGUE_END):
                 self.talking = False
 
@@ -101,7 +99,7 @@ class Player(AnimatedEntity):
         if not self.npc_near_by or not self.npc_near_by.has_dialogue():
             return
         # Broadcast an event for the NPC to handle
-        # logger.info(f"_handle_activation with: {self.npc_near_by.entity_type}")
+        logger.info(f"_handle_activation with: {self.npc_near_by.entity_type}")
         GameEvent(EventType.PLAYER_ACTIVATE_NPC, listener_id=self.npc_near_by.id).post()
         self.talking = True  # this will turn back to False when receiving event NPC_DIALOGUE_END
 
@@ -130,23 +128,22 @@ class Player(AnimatedEntity):
                     GameEvent(EventType.LEVEL_END).post()
 
     # <-- COT MOC 4 -->
-    # def _handle_throw(self):
-    #     """
+    def _handle_throw(self):
     #     Spawns a ball at Player position, around the shoulder-level.
     #     Set it motions to go left or right depending on the facing of Player.
     #     :return:
     #     """
-    #     self.set_action(ActionType.THROW, duration_ms=PlayerConfig.THROW_DURATION_MS)
-    #     ball_id = self.world.add_entity(
-    #         EntityType.PLAYER_BULLET,
-    #         self.rect.centerx,
-    #         self.rect.centery - 30,
-    #     )
-    #     ball = self.world.get_entity(ball_id)
-    #     if self.get_flip_x():
-    #         ball.move_left()
-    #     else:
-    #         ball.move_right()
+        self.set_action(ActionType.THROW, duration_ms=PlayerConfig.THROW_DURATION_MS)
+        ball_id = self.world.add_entity(
+            EntityType.PLAYER_BULLET,
+            self.rect.centerx,
+            self.rect.centery - 30,
+        )
+        ball = self.world.get_entity(ball_id)
+        if self.get_flip_x():
+           ball.move_left()
+        else:
+           ball.move_right()
 
     def _update_screen_offset(self):
         """Logics for horizontal world scroll based on player movement"""

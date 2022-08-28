@@ -94,7 +94,6 @@ class World(BaseScene):
         for now just naively render entities as the order stored in `self.entities`.
         """
         self.player.render(screen)
-
         for entity in self.entities.values():
             if entity.entity_type not in FIXED_POSITION_TYPES:
                 entity.rect.x += self.delta_screen_offset
