@@ -125,21 +125,19 @@ class ShadowConfig:
     SPEED: int = 1
     DAMAGE: int = 1
 
-
 class ShadowBossConfig:
     SPRITE_PATH: Path = ASSET_DIR / "npcs" / "shadow"
     SCALE: float = 0.6
     ANIMATION_INTERVAL_MS: int = 200
     SPEED: int = 1
     DAMAGE: int = 1
-    INITIAL_HP: int = 100
+    INITIAL_HP: int = 5820
 
     ANGRY_INTERVAL_MS: int = 7000
     ANGRY_DURATION_MS: int = 2000
 
-    HURT_DURATION_MS: int = 500
-
-
+    HURT_DURATION_MS: int = 30
+    
 class ShadowBulletConfig:
     SPRITE_PATH: Path = ASSET_DIR / "items" / "shadow_bullet.png"
     SCALE: float = 0.05

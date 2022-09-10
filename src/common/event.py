@@ -24,6 +24,7 @@ class EventType(enum.Enum):
     RESTART_LEVEL = pygame.event.custom_type()
     LEVEL_END = pygame.event.custom_type()
     VICTORY = pygame.event.custom_type()
+    OH_NO_CRINGE = pygame.event.custom_type()
 
     JUMP = pygame.event.custom_type()
     HURT = pygame.event.custom_type()

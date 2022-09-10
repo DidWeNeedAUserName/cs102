@@ -1,9 +1,8 @@
 import logging
 import random
-
 from common import util
 from common.event import EventType, GameEvent
-from common.types import ActionType, EntityType
+from common.types import COLLECTABLE_TYPES, ActionType, EntityType
 from common.util import now
 from config import Color, ShadowBossConfig
 from entities.bullet import Bullet
@@ -11,7 +10,7 @@ from entities.shadow import Shadow
 
 logger = logging.getLogger(__name__)
 
-
+needed_items_cnt = 3
 class ShadowBoss(Shadow):
     """Boss (a large shadow)."""
 
@@ -52,7 +51,6 @@ class ShadowBoss(Shadow):
         bullet: Bullet
         for bullet in self.world.get_entities(EntityType.PLAYER_BULLET):
             if self.collide(bullet):
-
                 # Unlike normal shadow vs. bullet interaction, the boss would absorb the bullet,
                 # so we remove the bullet right here.
                 self.world.remove_entity(bullet.id)
@@ -69,7 +67,7 @@ class ShadowBoss(Shadow):
         if self.hp > 0:
             util.display_text(
                 screen,
-                f"{self.hp} / 100",
+                f"{self.hp} / 5820",
                 x=self.rect.x,
                 y=self.rect.top + self.HP_TEXT_HEIGHT_OFFSET,
                 color=Color.BOSS_HP_BAR,
