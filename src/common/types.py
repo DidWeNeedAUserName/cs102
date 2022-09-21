@@ -49,7 +49,7 @@ class EntityType(enum.Enum):
     HP_HEART = 107
 
     # COT MOC 2: burger rain
-    # ENDING_BURGER = 108
+    ENDING_BURGER = 108
 
 
 OBSTACLES_TYPES = (EntityType.GROUND_A, EntityType.GROUND_B)

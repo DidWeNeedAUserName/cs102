@@ -49,12 +49,12 @@ class Menu(BaseScene):
                         )
                     )
             # COT MOC 3: roll credits
-            # frame.pack(
-            #     self.menu.add.button(
-            #         "[dev-mode] Victory Scene",
-            #         GameEvent(EventType.VICTORY).post,
-            #     )
-            # )
+            frame.pack(
+                self.menu.add.button(
+                    "[dev-mode] Victory Scene",
+                    GameEvent(EventType.VICTORY).post,
+                )
+            )
 
         extra_level_ids = [level_id for level_id in available_level_ids if level_id >= 10]
         frame.pack(

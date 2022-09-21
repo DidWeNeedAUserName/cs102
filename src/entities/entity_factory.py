@@ -56,12 +56,14 @@ class EntityFactory:
                 scale=PlayerConfig.SCALE,
                 animation_interval_ms=PlayerConfig.ANIMATION_INTERVAL_MS,
             )
+
         elif entity_type == EntityType.PLAYER_HP:
             return PlayerHp(
                 entity_type=entity_type,
                 x=PlayerHpConfig.X,
                 y=PlayerHpConfig.Y,
             )
+
         elif entity_type == EntityType.PLAYER_INVENTORY:
             return PlayerInventory(
                 entity_type=entity_type,
@@ -70,6 +72,7 @@ class EntityFactory:
                 sprite_path=PlayerInventoryConfig.SPRITE_PATH,
                 scale=PlayerInventoryConfig.SCALE,
             )
+
         elif entity_type == EntityType.PLAYER_BULLET:
             return Bullet(
                 entity_type=entity_type,
@@ -83,6 +86,7 @@ class EntityFactory:
                 speed=PlayerBulletConfig.SPEED,
                 damage=PlayerBulletConfig.DAMAGE,
             )
+
         elif entity_type == EntityType.SHADOW_BULLET:
             return Bullet(
                 entity_type=entity_type,
@@ -96,6 +100,7 @@ class EntityFactory:
                 speed=ShadowBulletConfig.SPEED,
                 damage=ShadowBulletConfig.DAMAGE,
             )
+
         elif entity_type == EntityType.SHADOW_ALPHA:
             return ShadowAlpha(
                 entity_type=entity_type,
@@ -106,6 +111,7 @@ class EntityFactory:
                 animation_interval_ms=ShadowConfig.ANIMATION_INTERVAL_MS,
                 speed=ShadowConfig.SPEED,
             )
+
         elif entity_type == EntityType.SHADOW:
             return Shadow(
                 entity_type=entity_type,
@@ -117,6 +123,7 @@ class EntityFactory:
                 speed=ShadowConfig.SPEED,
                 damage=ShadowConfig.DAMAGE,
             )
+
         elif entity_type == EntityType.SHADOW_BOSS:
             return ShadowBoss(
                 entity_type=entity_type,
@@ -140,6 +147,7 @@ class EntityFactory:
                 scale=config.scale,
                 animation_interval_ms=config.animation_interval_ms,
             )
+
         elif entity_type == EntityType.DIALOGUE_BOX:
             return DialogueBox(
                 entity_type=entity_type,
@@ -148,6 +156,7 @@ class EntityFactory:
                 sprite_path=DialogueBoxConfig.SPRITE_PATH,
                 scale=DialogueBoxConfig.SCALE,
             )
+
         elif entity_type == EntityType.TRAMPOLINE:
             return Trampoline(
                 entity_type=entity_type,
@@ -157,6 +166,7 @@ class EntityFactory:
                 scale=TrampolineConfig.SCALE,
                 animation_interval_ms=TrampolineConfig.ANIMATION_INTERVAL_MS,
             )
+
         elif entity_type in TRAMPOLINE_PART_TYPES:
             return TrampolinePart(
                 entity_type=entity_type,
@@ -165,18 +175,20 @@ class EntityFactory:
                 sprite_path=ASSET_DIR / "items" / f"{entity_type.name.lower()}.png",
                 scale=(GameConfig.TILE_SIZE, GameConfig.TILE_SIZE),
             )
+
         # COT MOC 2: burger rain
-        # elif entity_type == EntityType.ENDING_BURGER:
-        #     return Bullet(
-        #         entity_type=entity_type,
-        #         ttl_ms=EndingBurgerConfig.TTL_MS,
-        #         x=x,
-        #         y=y,
-        #         sprite_path=EndingBurgerConfig.SPRITE_PATH,
-        #         scale=EndingBurgerConfig.SCALE,
-        #         gravity=EndingBurgerConfig.GRAVITY,
-        #         damage=0,
-        #     )
+        elif entity_type == EntityType.ENDING_BURGER:
+            return Bullet (
+                entity_type = entity_type,
+                ttl_ms = EndingBurgerConfig.TTL_MS,
+                x = x,
+                y = y,
+                sprite_path = EndingBurgerConfig.SPRITE_PATH,
+                scale = EndingBurgerConfig.SCALE,
+                gravity = EndingBurgerConfig.GRAVITY,
+                damage = 0,
+            )
+            
         else:
             return BaseEntity(
                 entity_type=entity_type,

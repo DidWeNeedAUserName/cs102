@@ -14,7 +14,7 @@ class Victory(BaseScene):
     """Show when player won game."""
 
     BG_MAX_ALPHA = 160
-    ROLLING_TEXT_INTERVAL_MS = 19  # how fast the text rolls
+    ROLLING_TEXT_INTERVAL_MS = 20  # how fast the text rolls
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -41,9 +41,9 @@ class Victory(BaseScene):
         super().tick(events)
 
         # COT MOC 3: roll credits
-        # self.draw_background()
-        # if self.draw_internship_report():
-        #     self.draw_credit()
+        self.draw_background()
+        if self.draw_internship_report():
+            self.draw_credit()
 
         self.handle_return_to_menu(events)
         return True
@@ -75,13 +75,13 @@ class Victory(BaseScene):
             else:
                 break
 
-            util.display_text(
+            util.display_text (
                 self.screen,
                 text=text,
                 x=x,
                 y=y + i * line_height,
                 font_size=27 if i == 0 else 26,
-                color=Color.TEXT_INTERNSHIP_REPORT,
+                color=Color.TEXT_INTERNSHIP_REPORT
             )
 
         now_ms = now()

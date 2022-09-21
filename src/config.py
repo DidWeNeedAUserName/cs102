@@ -27,8 +27,8 @@ class Color:
     TEXT_INVENTORY_CNT = (255, 255, 0)
 
     # COT MOC 3: roll credits
-    # TEXT_INTERNSHIP_REPORT = (242, 222, 179)
-    # TEXT_CREDIT = (230, 147, 154)
+    TEXT_INTERNSHIP_REPORT = (242, 222, 179)
+    TEXT_CREDIT = (230, 147, 154)
 
 
 class GameConfig:
@@ -136,10 +136,10 @@ class ShadowConfig:
 class ShadowBossConfig:
     SPRITE_PATH: Path = ASSET_DIR / "npcs" / "shadow"
     SCALE: float = 0.6
-    ANIMATION_INTERVAL_MS: int = 200
-    SPEED: int = 1
+    ANIMATION_INTERVAL_MS: int = 300
+    SPEED: int = 10
     DAMAGE: int = 1
-    INITIAL_HP: int = 100
+    INITIAL_HP: int = 5892
 
     ANGRY_INTERVAL_MS: int = 7000
     ANGRY_DURATION_MS: int = 2000
